@@ -6,11 +6,15 @@ platform independent means we have hardware which is run by OS. it need to make 
 
 Java will run on OS it will compatible on every OS. js code was created which is converted into bytecode, which will be compatible with all the OS.
 
+---
+
 hardware 
     OS
         JVM
 
 it makes an agreement with the OS that whenever it will get any javacode file, it will not be executed it's component will exist known as JVM (Java virtual machine).
+
+---
 
 it does not exist physically instead virtually, now the jvm will read every bytecode. JVM also has a component inside it which is called JRE which run each code of java. Java runtime environement.
 
@@ -19,6 +23,7 @@ to run javacode or run java application we need software JRE.
 to use java programe we need  JDK and JRE
 interpreter and compiler are also required for this.
 
+---
 
 ### Common Java Terms
 
@@ -35,6 +40,8 @@ interpreter and compiler are also required for this.
 3. Add Java to system PATH
 
 4. Verify installation with `java -version`
+
+---
 
 # steps to create file
 
