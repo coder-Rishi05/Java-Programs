@@ -1,0 +1,57 @@
+interface class_A {
+	
+void dispplay1();	
+
+}
+
+interface class_B {
+
+void display2();
+
+} 
+
+
+interface class_C extends class_A, class_B {
+
+void display3();
+
+} 
+
+
+
+class b implements implements class_c {
+
+
+public void display1(){
+System.out.println("display 1");
+
+}
+
+public void display2(){
+System.out.println("display 1");
+
+}
+
+public void display3(){
+System.out.println("display 1");
+
+}
+
+
+}
+
+class c  {
+
+
+
+public static void main(String at[]){
+	
+b obj = new b();
+
+obj.disp();	
+
+
+obj.display();	
+}
+
+}

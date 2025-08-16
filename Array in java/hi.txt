@@ -1,0 +1,58 @@
+<div class="my-4 h-10 w-full rounded-md border-2 border-e-fuchsia-500 bg-violet-100 p-2">
+  <h1 class="text-center font-mono text-lg font-extrabold text-zinc-800">Hello World</h1>
+</div>
+
+<div class="flex w-full flex-col items-center justify-evenly space-x-6">
+  <div class="h-15 w-15 rounded-full bg-blue-600"></div>
+  <div class="h-15 w-15 rounded-full bg-orange-600"></div>
+  <div class="h-15 w-15 rounded-full bg-green-600"></div>
+</div>
+
+<!-- grid -->
+<div class="mx-4 mt-4 grid grid-cols-3 gap-2">
+  <div class="h-15 w-15 rounded-full bg-blue-600"></div>
+  <div class="h-15 w-15 rounded-full bg-orange-600"></div>
+  <div class="h-15 w-15 rounded-full bg-green-600"></div>
+</div>
+<!-- jit : jUST IN COMPILER is used by tailwind css.  -->
+
+<!-- Media Quaries -->
+
+<div class=" mx-10 mt-10 md:block sm:block sm:bg-green-400 hidden ">
+  <p class="text-white">hellow there</p>
+</div>
+
+<!-- Default dark mode in tailwind -->
+
+<!-- dark:bg-black dark:text-amber-200 -->
+<div class="mt-[10vh] text-center text-2xl font-bold uppercase bg-amber-50 dark:bg-black dark:text-white " > 
+  Dark mode is off.  
+</div>
+
+<!-- Custom styles in css -->
+<!-- tailwind config -->
+<!-- responsive text tip -->
+<p class="text-chestnut card  text-[min(10vw,70px)] " >Hey</p>
+
+<!-- custom checkboxes -->
+
+<input type="checkbox" class="accent-green-400 w-30 h-30" >
+
+
+@import "tailwindcss";
+
+body{
+  background-color: #10172a;
+}
+/* Giving custom color property in variables in css. */
+@theme {
+  /* ... */
+  --color-chestnut:#973f29;
+}
+/* Creating custom components */
+@layer components {
+  .card{
+    @apply m-10 rounded-l-2xl bg-amber-500
+  }
+}
+
