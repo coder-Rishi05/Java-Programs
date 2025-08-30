@@ -11,8 +11,9 @@ class B extends A {
     int y ; 
     char c;
 
-    B(int a){
-
+    B(int c){
+        super(10);
+        System.out.println("B's class constructor.");
     }
 
     void display(){
@@ -23,7 +24,8 @@ class B extends A {
 
 class c {
     public static void main(String st[]){
-        B obj = new B(10);
+        A obj;
+        obj = new B(1);
         obj.display();
     }
 }
