@@ -62,3 +62,38 @@ class cla {
 
 
 Here a string should be a proper integer we cant have this : 345we. 
+
+### keyboard inputes
+
+the keyboard input are defined in System.in class which take input as character.
+in java we have two ways to input data byte and character.
+
+character line by line
+character string by string
+character word by word
+
+every input from keyboard will be came in System.in class
+
+
+### Input stream reader
+
+byte oriented character oriented
+
+byte
+java.io.InputStream   // reader
+java.io.OutputStream // reader
+
+character
+
+java.io.reader() // input // writer
+java.io.Write() / output // writer
+
+
+- the only way of taking input from the user.
+        System.in()
+
+
+
+// Buffer Reader => this is also a whole class which have diffrent functions for taking input.
+
+1. readline() -> 
