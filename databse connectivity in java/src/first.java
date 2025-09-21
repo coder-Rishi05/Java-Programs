@@ -1,13 +1,26 @@
 import java.sql.*;
-import java.sql.DriverManager;
-import java.sql.Connection;
 
 class jdbc1 {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        // updated path for sql 8.0 version.
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rishi", "root", "root12");
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/rishi",
+                    "root", // ✅ just the username
+                    "root12" // ✅ your password
+            );
+
+            Statement sc = con.createStatement();
+            int x = sc.executeUpdate("insert into dup values (4112, rishabh )");
+
+            System.out.println("Inserted a query : ");
+            System.out.println(x);
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
 
