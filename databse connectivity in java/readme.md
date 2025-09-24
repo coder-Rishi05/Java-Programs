@@ -6,26 +6,35 @@ This README walks you through a complete, practical workflow for connecting Java
 
 ---
 
+- for connectivity and inserting the data
+
+```
+ PS D:\JAVA\databse connectivity in java\src> javac -cp " ../lib/mysql-connector-j-9.4.0.jar;."jdbc.java
+ PS D:\JAVA\databse connectivity in java\src> java -cp "../lib/mysql-connector-j-9.4.0.jar;." a(classfile)
+```
+
+---
+
 ## Overview
 
 Goal: compile and run Java programs that talk to a local MySQL server using JDBC.
 
 You will learn:
 
-* Project layout and where to put the Connector/J `*.jar`
-* How to compile and run with the JDBC driver on the classpath
-* Basic `INSERT` and `SELECT` examples (Statement and PreparedStatement)
-* How to set a permanent CLASSPATH or use a small batch file
-* Troubleshooting (ClassNotFoundException, access denied, timezone errors, etc.)
+- Project layout and where to put the Connector/J `*.jar`
+- How to compile and run with the JDBC driver on the classpath
+- Basic `INSERT` and `SELECT` examples (Statement and PreparedStatement)
+- How to set a permanent CLASSPATH or use a small batch file
+- Troubleshooting (ClassNotFoundException, access denied, timezone errors, etc.)
 
 ---
 
 ## Prerequisites
 
-* Java JDK installed (8+). `java -version` and `javac -version` should work.
-* MySQL Server 8.x installed and running locally.
-* MySQL Connector/J `mysql-connector-j-<version>.jar` downloaded.
-* Basic familiarity with PowerShell / command prompt.
+- Java JDK installed (8+). `java -version` and `javac -version` should work.
+- MySQL Server 8.x installed and running locally.
+- MySQL Connector/J `mysql-connector-j-<version>.jar` downloaded.
+- Basic familiarity with PowerShell / command prompt.
 
 ---
 
@@ -115,9 +124,9 @@ public class jdbc2 {
 
 Notes:
 
-* Use `com.mysql.cj.jdbc.Driver` for MySQL Connector/J 8.x and newer.
-* `serverTimezone=UTC` helps avoid timezone-related startup warnings.
-* `useSSL=false` is convenient for local dev.
+- Use `com.mysql.cj.jdbc.Driver` for MySQL Connector/J 8.x and newer.
+- `serverTimezone=UTC` helps avoid timezone-related startup warnings.
+- `useSSL=false` is convenient for local dev.
 
 ---
 
@@ -135,8 +144,8 @@ Then compile (relative path to the jar):
 PS> javac -cp "../lib/mysql-connector-j-9.4.0.jar;." jdbc2.java
 ```
 
-* `-cp` tells the compiler where to find external classes.
-* `.;` ensures the current directory is included.
+- `-cp` tells the compiler where to find external classes.
+- `.;` ensures the current directory is included.
 
 If compile succeeds you should have `jdbc2.class` in `src`.
 
@@ -176,8 +185,9 @@ If you prefer not to type `-cp` every time you can add a `CLASSPATH` system vari
 1. Right-click **This PC** → **Properties** → **Advanced system settings** → **Environment Variables**.
 2. Under **System variables** click **New\...**.
 
-   * Variable name: `CLASSPATH`
-   * Variable value: `.;D:\JAVA\databse connectivity in java\lib\mysql-connector-j-9.4.0.jar`
+   - Variable name: `CLASSPATH`
+   - Variable value: `.;D:\JAVA\databse connectivity in java\lib\mysql-connector-j-9.4.0.jar`
+
 3. OK → restart terminal.
 
 After this you can run `java jdbc2` (provided your current working directory contains the `.class` or `src` is in CLASSPATH).
@@ -210,15 +220,15 @@ unjdbc.bat`.
 
 ### `java.lang.ClassNotFoundException: com.mysql.cj.jdbc.Driver`
 
-* Cause: Connector JAR is not on the **runtime** classpath.
-* Fix: Run with `-cp` including the jar, e.g.: `java -cp ".;../lib/mysql-connector-j-9.4.0.jar" jdbc2` or set CLASSPATH.
-* Also verify the jar file actually exists at the path.
+- Cause: Connector JAR is not on the **runtime** classpath.
+- Fix: Run with `-cp` including the jar, e.g.: `java -cp ".;../lib/mysql-connector-j-9.4.0.jar" jdbc2` or set CLASSPATH.
+- Also verify the jar file actually exists at the path.
 
 ### `Access denied for user 'root'@'localhost' (using password: YES)`
 
-* Cause: wrong username/password or host mismatch.
-* Fix: Test credentials in MySQL CLI: `mysql -u root -p` and try the same user. Check `SELECT USER(), CURRENT_USER();`.
-* If you need a separate user for the `rishi` DB:
+- Cause: wrong username/password or host mismatch.
+- Fix: Test credentials in MySQL CLI: `mysql -u root -p` and try the same user. Check `SELECT USER(), CURRENT_USER();`.
+- If you need a separate user for the `rishi` DB:
 
   ```sql
   CREATE USER 'rishi'@'localhost' IDENTIFIED BY 'rishiPass';
@@ -228,15 +238,15 @@ unjdbc.bat`.
 
 ### `The server time zone value '...' is unrecognized` or timezone warnings
 
-* Fix: add `&serverTimezone=UTC` (or appropriate tz) to the JDBC URL: `jdbc:mysql://localhost:3306/rishi?useSSL=false&serverTimezone=UTC`
+- Fix: add `&serverTimezone=UTC` (or appropriate tz) to the JDBC URL: `jdbc:mysql://localhost:3306/rishi?useSSL=false&serverTimezone=UTC`
 
 ### `Communications link failure` / cannot connect
 
-* Fixes:
+- Fixes:
 
-  * Ensure MySQL service is running (Windows Services or `mysqld` process).
-  * Check port (default 3306) is correct and not blocked by firewall.
-  * Try `mysql -u root -p -h 127.0.0.1 -P 3306` to test connectivity.
+  - Ensure MySQL service is running (Windows Services or `mysqld` process).
+  - Check port (default 3306) is correct and not blocked by firewall.
+  - Try `mysql -u root -p -h 127.0.0.1 -P 3306` to test connectivity.
 
 ---
 
@@ -257,8 +267,8 @@ DESCRIBE dup;
 
 ## 10) Short guide: Statement vs PreparedStatement
 
-* `Statement` is simple but vulnerable to SQL injection and not parameterized.
-* `PreparedStatement` allows parameter placeholders (`?`), is precompiled, and safer for user input.
+- `Statement` is simple but vulnerable to SQL injection and not parameterized.
+- `PreparedStatement` allows parameter placeholders (`?`), is precompiled, and safer for user input.
 
 Example insert with `PreparedStatement` (see code above).
 
@@ -266,24 +276,24 @@ Example insert with `PreparedStatement` (see code above).
 
 ## 11) Next steps / Improvements
 
-* Move to a build tool (Maven or Gradle) to manage the connector dependency automatically.
-* Use an IDE (IntelliJ/Eclipse) for easier debugging, auto classpath management, and auto-complete.
-* If building a larger app, create a DAO layer, connection pooling (HikariCP), and proper exception handling.
+- Move to a build tool (Maven or Gradle) to manage the connector dependency automatically.
+- Use an IDE (IntelliJ/Eclipse) for easier debugging, auto classpath management, and auto-complete.
+- If building a larger app, create a DAO layer, connection pooling (HikariCP), and proper exception handling.
 
 ---
 
 ## 12) Appendix: Quick reference commands
 
-* Compile: `javac -cp "../lib/mysql-connector-j-9.4.0.jar;." jdbc2.java`
-* Run: `java -cp ".;../lib/mysql-connector-j-9.4.0.jar" jdbc2`
-* MySQL test login: `mysql -u root -p`
+- Compile: `javac -cp "../lib/mysql-connector-j-9.4.0.jar;." jdbc2.java`
+- Run: `java -cp ".;../lib/mysql-connector-j-9.4.0.jar" jdbc2`
+- MySQL test login: `mysql -u root -p`
 
 ---
 
 If you want, I can:
 
-* create the runnable `runjdbc.bat` for your project,
-* give a Maven `pom.xml` with the connector dependency,
-* or produce a single downloadable `README.md` file (I can export it for you).
+- create the runnable `runjdbc.bat` for your project,
+- give a Maven `pom.xml` with the connector dependency,
+- or produce a single downloadable `README.md` file (I can export it for you).
 
 Happy coding — tell me which next step you want!

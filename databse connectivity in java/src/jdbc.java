@@ -1,6 +1,8 @@
+// connection programm
+
 import java.sql.*;
 
-class jdbc2 {
+class a {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -11,12 +13,18 @@ class jdbc2 {
                     "root12" // ✅ your password
             );
 
-            // Statement sc = con.createStatement();
-            // int x = sc.executeUpdate("desc java_work");
+            Statement sc = con.createStatement();
+            int a = 3;
+            String st = "harry";
+            int x = sc.executeUpdate("insert into java_work values (" + 1 +a + 2 +st + ")");
 
-            System.out.println("setup conection ");
-            // System.out.println(x);
-            // con.close();
+            System.out.println("insert successfull : " + x);
+            // ResultSet rs = sc.executeQuery("SELECT * FROM java_work");
+            // while (rs.next()) {
+            // System.out.println(rs.getInt("roll") + " | " +
+            // rs.getString("name"));
+            // }
+            con.close();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -24,9 +32,4 @@ class jdbc2 {
     }
 }
 
-// for connectivity and inserting the data
-
-// PS D:\JAVA\databse connectivity in java\src> javac -cp "
-// ../lib/mysql-connector-j-9.4.0.jar;."jdbc.java
-// // PS D:\JAVA\databse connectivity in java\src> java -cp
-// "../lib/mysql-connector-j-9.4.0.jar;." jdbc2
+// taking values from user to get the name for column and roll no.
