@@ -14,10 +14,11 @@ class a {
             );
 
             Statement sc = con.createStatement();
-            int a = 3;
-            String st = "harry";
-            int x = sc.executeUpdate("insert into java_work values (" + 1 +a + 2 +st + ")");
-
+            int a = 11;
+            String st = "Harry";
+            // int x = sc.executeUpdate("insert into st_roll (roll) values (" + a + ")");
+            // for roll
+            int x = sc.executeUpdate("insert into  java_work (roll,name) values (" + a + ", +'" + st + "')"); // for name
             System.out.println("insert successfull : " + x);
             // ResultSet rs = sc.executeQuery("SELECT * FROM java_work");
             // while (rs.next()) {
